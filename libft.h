@@ -11,5 +11,6 @@ int	ft_strlen(const char *s);
 void    *ft_memset(void *p, int c, int length);
 int	ft_atoi(const char *str);
 int	ft_toupper(int c);
+int	ft_tolower(int c);
 
 #endif
