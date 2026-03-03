@@ -16,5 +16,6 @@ int		ft_atoi(const char *str);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_memset(void *p, int c, size_t length);
+void	ft_bzero(void *p, size_t length);
 
 #endif
