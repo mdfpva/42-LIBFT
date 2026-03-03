@@ -1,4 +1,4 @@
-void	*memset(void *p, int c, int length)
+void	*ft_memset(void *p, int c, int length)
 {
 	unsigned int	i;
 	unsigned char	*ptr;
