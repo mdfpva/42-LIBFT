@@ -15,8 +15,9 @@ int		ft_strlen(const char *s);
 int		ft_atoi(const char *str);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-void	*ft_memcpy(void *dest, const void *src, size_t length);
 void	*ft_memset(void *p, int c, size_t length);
+void	*ft_memcpy(void *dest, const void *src, size_t length);
+void	*ft_memmove(void *dest, const void *src, size_t length);
 void	ft_bzero(void *p, size_t length);
 
 #endif
