@@ -4,6 +4,8 @@
 // includes
 
 # include <stddef.h>
+# include <stdlib.h>
+# include <stdint.h>
 
 // libc functions
 int		ft_isalpha(int c);
@@ -24,6 +26,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t length);
 void	*ft_memmove(void *dest, const void *src, size_t length);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	ft_bzero(void *p, size_t length);
+void	*ft_calloc(size_t n, size_t size);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
