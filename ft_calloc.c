@@ -7,6 +7,8 @@ void	*ft_calloc(size_t n, size_t size)
 
 	if (n != 0 && size > (SIZE_MAX / n))
 		return (0);
+	if (n == 0 || size == 0)
+		return (malloc(1));
 	total_size = n * size;
 	ptr = malloc(total_size);
 	if (!ptr)
