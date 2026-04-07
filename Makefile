@@ -10,7 +10,7 @@ SRCS = ft_isalpha.c ft_memcpy.c ft_strrchr.c \
 	ft_bzero.c \
 	ft_calloc.c ft_strdup.c \
 	ft_substr.c ft_strjoin.c \
-	ft_strtrim.c ft_split.c
+	ft_strtrim.c ft_split.c ft_itoa.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
