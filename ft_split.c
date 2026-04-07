@@ -49,17 +49,11 @@ static void	*ft_free_all(char **words, int j)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_fill_words(char const *s, char c, char **words)
 {
-	int		i;
-	int		j;
-	char	**words;
+	int	i;
+	int	j;
 
-	if (!s)
-		return (NULL);
-	words = (char **)malloc(sizeof(char *) * (ft_word_count(s, c) + 1));
-	if (!words)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i])
@@ -78,4 +72,16 @@ char	**ft_split(char const *s, char c)
 	}
 	words[j] = NULL;
 	return (words);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**words;
+
+	if (!s)
+		return (NULL);
+	words = (char **)malloc(sizeof(char *) * (ft_word_count(s, c) + 1));
+	if (!words)
+		return (NULL);
+	return (ft_fill_words(s, c, words));
 }
