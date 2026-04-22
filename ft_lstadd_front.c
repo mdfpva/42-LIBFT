@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mide-fre <mide-fre@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 09:14:13 by mide-fre          #+#    #+#             */
-/*   Updated: 2026/04/21 09:14:16 by mide-fre         ###   ########.fr       */
+/*   Created: 2026/04/21 14:12:59 by mide-fre          #+#    #+#             */
+/*   Updated: 2026/04/21 14:23:33 by mide-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int		i;
-	int		j;
-	char	*res;
-
-	if (!s1 || !s2)
-		return (0);
-	res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
-		return (0);
-	i = 0;
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-	{
-		res[i + j] = s2[j];
-		j++;
-	}
-	res[i + j] = '\0';
-	return (res);
+	if (!lst || !new)
+		return ;
+	new -> next = *lst;
+	*lst = new;
 }

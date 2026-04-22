@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mide-fre <mide-fre@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 09:14:13 by mide-fre          #+#    #+#             */
-/*   Updated: 2026/04/21 09:14:16 by mide-fre         ###   ########.fr       */
+/*   Created: 2026/04/21 19:47:35 by mide-fre          #+#    #+#             */
+/*   Updated: 2026/04/22 09:16:31 by mide-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int		i;
-	int		j;
-	char	*res;
+	t_list	*temp;
 
-	if (!s1 || !s2)
-		return (0);
-	res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
-		return (0);
-	i = 0;
-	while (s1[i])
+	if (!lst || !*lst || !del)
+		return ;
+	while (*lst)
 	{
-		res[i] = s1[i];
-		i++;
+		temp = (*lst)-> next;
+		del((*lst)-> content);
+		free(*lst);
+		*lst = temp;
 	}
-	j = 0;
-	while (s2[j])
-	{
-		res[i + j] = s2[j];
-		j++;
-	}
-	res[i + j] = '\0';
-	return (res);
 }
