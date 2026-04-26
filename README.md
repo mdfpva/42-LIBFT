@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by <mide-fre>*
+*This project has been created as part of the 42 curriculum by mide-fre*
 
 # Libft
 
@@ -7,10 +7,11 @@
 Libft is a static C library that reimplements a set of fundamental functions from the standard C library (libc), along with additional utility functions and basic data structures.
 
 The main objective of this project is to develop a deep understanding of:
-- memory manipulation
-- string handling
-- dynamic memory allocation
-- data structures
+
+* memory manipulation
+* string handling
+* dynamic memory allocation
+* data structures
 
 This library is designed to be reused throughout the 42 curriculum, serving as a solid foundation for future projects.
 
@@ -24,62 +25,64 @@ The **Libft** library is organised into three main components, each addressing a
 
 These functions replicate the behaviour of standard libc functions, strictly following their original specifications:
 
-- **Character classification**  
-  Functions used to determine character properties (alphabetic, numeric, etc.).
+* **Character classification**  
+  Functions used to determine character properties such as alphabetic, numeric, ASCII, or printable values.
 
-- **Memory manipulation**  
-  Functions such as `memset`, `memcpy`, and `memmove` provide direct control over memory blocks, which is essential for performance and safety.
+* **Memory manipulation**  
+  Functions such as `memset`, `bzero`, `memcpy`, and `memmove` provide direct control over raw memory blocks.
 
-- **String manipulation**  
-  Functions like `strlen`, `strchr`, and `strncmp` allow efficient handling of C strings.
+* **String manipulation**  
+  Functions like `strlen`, `strchr`, `strrchr`, `strncmp`, `strlcpy`, `strlcat`, and `strnstr` allow efficient handling of C strings.
 
-- **Type conversion**  
-  `atoi` converts strings into integers.
+* **Type conversion**  
+  `atoi` converts a numeric string into an integer value.
 
-- **Memory allocation**  
-  `calloc` and `strdup` handle dynamic memory allocation safely.
+* **Dynamic allocation**  
+  `calloc` and `strdup` allocate and duplicate memory safely.
 
-All these functions are implemented without relying on their original counterparts, ensuring a complete understanding of their internal behaviour.
+All these functions are implemented independently in order to understand their internal logic and behaviour.
 
----
+### 2. Additional Utility Functions
 
-### 2. Additional Functions
+This section contains functions not present in the standard libc or implemented here in a different form:
 
-This set of functions extends the capabilities of the library:
+* `ft_substr`
+* `ft_strjoin`
+* `ft_strtrim`
+* `ft_split`
+* `ft_itoa`
+* `ft_strmapi`
+* `ft_striteri`
+* `ft_putchar_fd`
+* `ft_putstr_fd`
+* `ft_putendl_fd`
+* `ft_putnbr_fd`
 
-- **String processing**  
-  Functions such as `split`, `strjoin`, `substr`, and `strtrim` allow flexible manipulation of strings.
-
-- **Transformations**  
-  Functions like `strmapi` apply custom logic to each character of a string.
-
-- **Advanced conversion**  
-  `itoa` converts integers into strings, including negative values.
-
-- **File descriptor output**  
-  Functions to write characters, strings, and numbers to file descriptors (e.g. stdout, stderr).
-
-These utilities are commonly reused in more advanced projects and help reduce repetitive code.
-
----
+These functions provide advanced string processing, integer conversion, functional iteration, and controlled output to file descriptors.
 
 ### 3. Data Structures — Linked Lists
 
-The library includes an implementation of singly linked lists:
+The library also includes an implementation of singly linked lists using the following structure:
 
-- Each node contains:
-  - a generic pointer (`void *content`)
-  - a pointer to the next node
+    typedef struct s_list
+    {
+    	void			*content;
+    	struct s_list	*next;
+    }	t_list;
 
-- Provided functionalities:
-  - node creation
-  - insertion at the beginning and end
-  - list size calculation
-  - iteration over elements
-  - safe deletion of nodes
-  - list transformation (`lstmap`)
+Implemented linked list operations:
 
-This structure enables dynamic and flexible data storage.
+* `ft_lstnew`
+* `ft_lstadd_front`
+* `ft_lstsize`
+* `ft_lstlast`
+* `ft_lstadd_back`
+* `ft_lstdelone`
+* `ft_lstclear`
+* `ft_lstiter`
+* `ft_lstmap`
+
+These functions allow dynamic storage, traversal, deletion, and transformation of generic data.
 
 ---
 
@@ -87,5 +90,113 @@ This structure enables dynamic and flexible data storage.
 
 ### Compilation
 
-```bash
-make
+    make
+
+This command generates:
+
+    libft.a
+
+### Makefile Rules
+
+* `make` or `make all` → compile the library
+* `make clean` → remove object files
+* `make fclean` → remove object files and library
+* `make re` → rebuild everything
+
+### Usage
+
+Include the header file:
+
+    #include "libft.h"
+
+Compile your project with:
+
+    cc main.c -L. -lft
+
+---
+
+## Technical Details
+
+* Language: C
+* Norm: 42 Norminette
+* Compilation flags: `-Wall -Wextra -Werror`
+* No global variables
+* Helper functions defined as `static`
+* Static library created using `ar`
+* Careful dynamic memory management
+* No memory leaks
+
+---
+
+## Design Choices
+
+* Independent implementations without using the original libc functions unless explicitly authorised
+* Modular code organisation
+* Reusable internal logic whenever possible
+* Explicit handling of edge cases such as NULL pointers, zero lengths, and integer boundaries
+* Priority given to memory safety and predictable behaviour
+
+---
+
+## Testing
+
+The library was tested through:
+
+* custom personal test files
+* direct comparison with original libc behaviours
+* edge case validation
+* memory leak checks
+
+Special attention was given to:
+
+* empty strings
+* NULL pointers
+* overlapping memory areas
+* integer minimum and maximum values
+* allocation failures
+
+---
+
+## Resources
+
+### Classic References
+
+The following references were used throughout the development of this project:
+
+* Linux manual pages (`man`)
+* *The C Programming Language* — Brian W. Kernighan and Dennis M. Ritchie
+* GNU C Library Documentation
+* BSD libc Documentation
+* Official 42 Libft Subject
+
+These references were consulted to ensure that each function respected the expected prototype, return values, and edge-case behaviour.
+
+### Development and Debugging Resources
+
+Additional resources used during implementation and testing:
+
+* custom written test cases
+* peer discussions and peer evaluations
+* manual debugging with `gdb`
+* memory analysis with `valgrind`
+
+### AI Usage
+
+Artificial Intelligence was used exclusively as a supplementary learning and verification tool.
+
+Its usage was limited to:
+
+* clarifying low-level C concepts
+* discussing possible implementation strategies
+* validating understanding of edge cases
+* reviewing theoretical behaviour of standard functions
+
+AI was not used to blindly generate final solutions, and every function included in this library was manually written, tested, debugged, and fully understood before submission.
+
+---
+
+## Conclusion
+
+Libft establishes the essential foundations of low-level C programming by focusing on memory handling, string processing, dynamic allocation, and basic data structures.
+
+Beyond being a reusable static library, it represents a fundamental step towards writing safer, cleaner, and more efficient C code throughout the 42 curriculum.

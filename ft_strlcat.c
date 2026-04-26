@@ -6,7 +6,7 @@
 /*   By: mide-fre <mide-fre@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 09:14:52 by mide-fre          #+#    #+#             */
-/*   Updated: 2026/04/22 13:32:15 by mide-fre         ###   ########.fr       */
+/*   Updated: 2026/04/24 11:26:54 by mide-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
-	if (dst_len <= size)
+	if (dst_len >= size || size == 0)
 		return (size + src_len);
 	i = 0;
 	while (src[i] && (dst_len + i + 1) < size)

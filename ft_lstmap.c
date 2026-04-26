@@ -6,7 +6,7 @@
 /*   By: mide-fre <mide-fre@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 09:27:20 by mide-fre          #+#    #+#             */
-/*   Updated: 2026/04/22 12:01:39 by mide-fre         ###   ########.fr       */
+/*   Updated: 2026/04/26 15:18:25 by mide-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f || !del)
 		return (NULL);
+	new_lst = NULL;
+	last_node = NULL;
 	while (lst)
 	{
 		new_node = ft_lstnew(f(lst -> content));
